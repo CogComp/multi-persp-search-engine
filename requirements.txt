@@ -1,0 +1,10 @@
+django
+newspaper3k
+google-api-python-client
+nltk==3.4.5
+spacy==2.2.4
+urllib3==1.25.8
+django-cors-headers
+transformers==3.0.0
+torch==1.5.1
+sklearn

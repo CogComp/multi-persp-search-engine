@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="jumbotron jumbotron-fluid pt-0 pb-0">
+    <div class="navigation-bar-outer container pl-0">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-sm navbar-light mb-0" style="background: transparent">
+                    <button class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navigation-bar-inner collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/quote">Quote Search</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Contribute</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col d-none d-sm-block pt-2" style="text-align: right">
+                <a href="http://cogcomp.org"><img alt=" " src="{% static "img/ccg_logo.png" %}" class="ccg-logo"
+                                                  height="50px" width="auto"></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+{% load static %}
+{% include "components/html_head.html" %}
+<body>
+{% include "components/home_header.html" %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-11" style="padding-right: 5px">
+                <div class="form-group">
+                    <input id="input_user_query" type="text" placeholder="Ask a question about COVID-19" class="form-control"
+                           value="{{ query_text }}">
+                </div>
+            </div>
+            <div class="col-1" style="padding-left: 5px">
+                <button id="btn_search_user_query" type="submit" class="btn btn-primary">
+                    <span class="fui-search"></span>
+                </button>
+            </div>
+        </div>
+        <hr>
+
+        <h6>Project Philosophy</h6>
+        <p> Our information supply is contaminated. In an era where generating content and publishing it is so easy,
+            we are bombarded with irrelevant, redundant, unsolicited, incorrect, and otherwise low-value information,
+            and some of it does not rank high on the truth scale. Our long term goal is to define and address some
+            of the key research questions raised by the need to navigate our way through the information polluted
+            space – in politics, the medical domain, education, and more.</p>
+        <hr>
+        <h6>Immediate Goals</h6>
+        <p> In the context of COVID-19, we would like to provide a reasonably-sized set of relevant, trustworthy, and
+            timely information that would allow users to, rather quickly, become informed about the specific topics of
+            interest to them. Our immediate goals are to --
+        <ul>
+            <li>Reduce information redundancy</li>
+            <li>Provide a way for users to understand the relations between independently written documents.</li>
+        </ul>
+
+        <p>To help critical readers become informed about a topic, it is important to expose them to relevant
+            perspectives on a topic while minimizing the superfluous and redundant information. At the same
+            time, it is important to expose and present relations between independently produced documents so that it is
+            possible to evaluate the various emphases and nuances.
+
+            Moreover, organizing the information available along the topics it addresses, the type of the source
+            generating it, and the document type (e.g, factual reporting vs. opinion) helps the reader approach the
+            subject in an orderly and efficient way.
+        </p>
+        <p>
+            As researchers in Natural Language Understanding, we seek automated ways, driven by machine learning and
+            inference methods, to understand the documents well enough so that we can support these objectives.
+        </p>
+        <a href="/about">Read More</a>
+        <hr>
+    </div>
+
+
+    <!-- Link to custom javascript dependencies -->
+    <script type="text/javascript" src="{% static "js/index.js" %}"></script>
+</body>
+</html>

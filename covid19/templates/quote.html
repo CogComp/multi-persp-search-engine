@@ -1,0 +1,94 @@
+{% load static %}
+{% include "components/html_head.html" %}
+<body>
+{% include "components/search_header.html" %}
+
+    <div class="container">
+        <h6>Quote Search</h6>
+        <div class="row">
+            <div class="col-11" style="padding-right: 5px">
+                <div class="form-group">
+                    <input id="input_user_query" type="text" placeholder="Search for quotes about COVID-19" class="form-control"
+                           value="{{ quote }}">
+                </div>
+            </div>
+            <div class="col-1" style="padding-left: 5px">
+                <button id="btn_search_user_query" type="submit" class="btn btn-primary">
+                    <span class="fui-search"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <blockquote class="blockquote" style="cursor: pointer">
+            <p class="mb-0" style="font-size: 1rem">{{ quote }}</p>
+            <footer class="blockquote-footer" style="background: transparent">Author (need API to determine this automatically), Date</footer>
+        </blockquote>
+    </div>
+
+    <hr>
+
+    {% for source_type, articles in article_list_by_source.items %}
+        <div class="container {{ source_type|cut:" " }}">
+            <h6> From {{ source_type }} </h6>
+            <div class="row">
+                <div class="col-xs-1">
+                    <a class="round arrow previous" id="{{ source_type|cut:" " }}-0" style="cursor: pointer">&#8249</a>
+                </div>
+            {% for atc in articles %}
+
+                <div class="article col-md-5 col-sm-10 {% for tag_type, tag_vals in atc.dimensions.items %}
+                                                  {% for tag_val in tag_vals %}{{ tag_val|cut:" " }} {% endfor %}
+                                               {% endfor %} {{ source_type|cut:" " }} {{  forloop.counter0 }}">
+                    <div class="card">
+                        <img src="{{ atc.top_img_url }}" style="object-fit: cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h6 class="card-title"> {{ atc.title }} </h6>
+
+                            {% if atc.publish_date %}
+                            <h7 class="card-subtitle"> {{ atc.publish_date }} </h7>
+                            {%  endif %}
+
+                            {% if atc.authors %}
+                            <p class="card-text"> By: {{ atc.authors }} </p>
+                            {% endif %}
+
+                            <p>Read more at <a class="news-link" href="{{ atc.url }}" target="_blank">{{ atc.source_name }}</a></p>
+                            <hr>
+                            <a class="toggle" data-toggle="collapse" href="#{{ forloop.counter0 }}-{{ source_type|cut:" " }}-quotes"
+                               role="button">Quotes <i class="down"></i></a>
+                            <div id = "{{ forloop.counter0 }}-{{ source_type|cut:" "  }}-quotes" class="collapse">
+                                {% for quote, author in atc.quotes %}
+                                    <blockquote class="blockquote" style="cursor: pointer">
+                                        <p class="mb-0" style="font-size: 1rem">{{ quote }}</p>
+                                        <footer class="blockquote-footer" style="background: transparent">{{ author }}</footer>
+                                    </blockquote>
+                                {% endfor %}
+                            </div>
+                            <hr>
+                            {% for tag_type, tag_vals in atc.dimensions.items %}
+                                {{ tag_type }}:
+                                {% for tag_val in tag_vals %}
+                                    <span class="badge badge-info"> {{ tag_val }} </span>
+                                {% endfor %}
+                                <br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+                <div class="col-xs-1">
+                    <a class="round arrow next" id="{{ source_type|cut:" " }}-0" style="cursor: pointer">&#8250</a>
+                </div>
+            </div>
+        <hr>
+        </div>
+        {% endfor %}
+
+    <script type="text/javascript" src="{% static "js/quote.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/search_result.js" %}"></script>
+
+</body>
+</html>
